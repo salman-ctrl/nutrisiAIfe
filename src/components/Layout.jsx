@@ -1,7 +1,7 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Heartbeat, SquaresFour, ChatCenteredText, Camera, User, SignOut, Notebook, Info } from '@phosphor-icons/react';
+import { Heartbeat, SquaresFour, ChatCenteredText, Camera, User, SignOut, Notebook } from '@phosphor-icons/react';
 
 export default function Layout() {
     const { user, logout } = useContext(AuthContext);
@@ -13,7 +13,6 @@ export default function Layout() {
         { path: '/journal', icon: Notebook, label: 'Laporan' },
         { path: '/scan', icon: Camera, label: 'Scan', isMain: true },
         { path: '/chat', icon: ChatCenteredText, label: 'Chat' },
-        { path: '/about', icon: Info, label: 'Tentang' }, 
         { path: '/profile', icon: User, label: 'Profil' },
     ];
 
@@ -53,8 +52,7 @@ export default function Layout() {
                             {n.label === 'Home' ? 'Dashboard' : 
                              n.label === 'Laporan' ? 'Laporan Nutrisi' : 
                              n.label === 'Chat' ? 'Konsultasi AI' : 
-                             n.label === 'Scan' ? 'Scan Makanan' : 
-                             n.label === 'Tentang' ? 'Tentang Aplikasi' : 'Profil Saya'}
+                             n.label === 'Scan' ? 'Scan Makanan' : 'Profil Saya'}
                         </button>
                     ))}
                 </nav>
@@ -73,8 +71,7 @@ export default function Layout() {
                             {location.pathname === '/' ? 'Dashboard' : 
                              location.pathname === '/journal' ? 'Laporan Nutrisi' :
                              location.pathname === '/scan' ? 'Scan Makanan' :
-                             location.pathname === '/chat' ? 'Konsultasi AI' : 
-                             location.pathname === '/about' ? 'Tentang Aplikasi' : 'Profil Saya'}
+                             location.pathname === '/chat' ? 'Konsultasi AI' : 'Profil Saya'}
                         </h2>
                     </div>
                     <div className="flex items-center gap-3">
@@ -84,7 +81,7 @@ export default function Layout() {
                     </div>
                 </header>
 
-                <div className={`flex-1 overflow-y-auto min-h-0 ${location.pathname === '/chat' ? 'p-0 md:p-8' : 'p-4 md:p-8'} pb-32 scroll-smooth`}>
+                <div className="flex-1 overflow-y-auto min-h-0 p-4 md:p-8 pb-32 scroll-smooth">
                     <Outlet />
                 </div>
 

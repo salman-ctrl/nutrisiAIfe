@@ -1,34 +1,34 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Scan from './pages/Camera';
-import Journal from './pages/Journal';
-import Chat from './pages/Chat';
-import Profile from './pages/Profile';
-import About from './pages/About'; 
+import Chat from './pages/Chat';       
+import Camera from './pages/Camera';   
+import Profile from './pages/Profile'; 
+import Journal from './pages/Journal'; 
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           
-          <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-            <Route index element={<Dashboard />} />
-            <Route path="scan" element={<Scan />} />
-            <Route path="journal" element={<Journal />} />
-            <Route path="chat" element={<Chat />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="about" element={<About />} /> 
+          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/scan" element={<Camera />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
+
+export default App;
