@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import Scan from './pages/Scan';
+import Scan from './pages/Camera';
 import Journal from './pages/Journal';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
