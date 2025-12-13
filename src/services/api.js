@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-const PRODUCTION_URL = 'https://nutrisiaibe-4.onrender.com/api';
-
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
 const api = axios.create({
-    baseURL: isLocal ? 'http://localhost:5000/api' : PRODUCTION_URL,
+    baseURL: 'https://nutrisiaibe-4.onrender.com/api',
 });
 
 api.interceptors.request.use((config) => {
