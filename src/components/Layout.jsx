@@ -10,7 +10,7 @@ export default function Layout() {
 
     const navs = [
         { path: '/', icon: SquaresFour, label: 'Home' },
-        { path: '/journal', icon: Notebook, label: 'Jurnal' },
+        { path: '/journal', icon: Notebook, label: 'Laporan' },
         { path: '/scan', icon: Camera, label: 'Scan', isMain: true },
         { path: '/chat', icon: ChatCenteredText, label: 'Chat' },
         { path: '/profile', icon: User, label: 'Profil' },
@@ -41,24 +41,20 @@ export default function Layout() {
                 </div>
 
                 <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-                    {navs.filter(n => !n.isMain).map((n) => (
+                    {navs.map((n) => (
                         <button key={n.path} onClick={() => navigate(n.path)}
                             className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-bold transition-all group ${
                                 location.pathname === n.path 
                                 ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/40' 
                                 : 'text-slate-500 hover:bg-slate-50'
                             }`}>
-                            <n.icon size={24} /> {n.label === 'Home' ? 'Dashboard' : n.label === 'Jurnal' ? 'Jurnal Gizi' : n.label === 'Chat' ? 'Konsultasi AI' : 'Profil Saya'}
+                            <n.icon size={24} /> 
+                            {n.label === 'Home' ? 'Dashboard' : 
+                             n.label === 'Laporan' ? 'Laporan Nutrisi' : 
+                             n.label === 'Chat' ? 'Konsultasi AI' : 
+                             n.label === 'Scan' ? 'Scan Makanan' : 'Profil Saya'}
                         </button>
                     ))}
-                     <button onClick={() => navigate('/scan')}
-                        className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-bold transition-all group ${
-                            location.pathname === '/scan' 
-                            ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/40' 
-                            : 'text-slate-500 hover:bg-slate-50'
-                        }`}>
-                        <Camera size={24} /> Scan Makanan
-                    </button>
                 </nav>
 
                 <div className="p-6 border-t border-slate-100/50">
@@ -73,7 +69,7 @@ export default function Layout() {
                     <div>
                         <h2 className="text-xl font-extrabold text-slate-800 tracking-tight">
                             {location.pathname === '/' ? 'Dashboard' : 
-                             location.pathname === '/journal' ? 'Laporan Harian' :
+                             location.pathname === '/journal' ? 'Laporan Nutrisi' :
                              location.pathname === '/scan' ? 'Scan Makanan' :
                              location.pathname === '/chat' ? 'Konsultasi AI' : 'Profil Saya'}
                         </h2>

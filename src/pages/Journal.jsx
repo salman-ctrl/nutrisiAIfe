@@ -165,7 +165,7 @@ export default function Journal() {
     return (
         <div className="space-y-8 animate-fade-in w-full">
             <div className="flex flex-col gap-6">
-                <div className="flex flex-col md:flex-row justify-between items-end">
+                <div className="flex flex-col md:flex-row justify-between items-start">
                     <div>
                         <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">Analisis Medis</h2>
                         <p className="text-slate-500 text-sm mt-1 flex items-center gap-2">
