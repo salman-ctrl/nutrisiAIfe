@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../services/api';
 import { calculateNeeds } from '../utils/nutritionCalc';
-import { Drop, Plus, Minus } from '@phosphor-icons/react';
+import { Drop, Plus, Minus, Question } from '@phosphor-icons/react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 
@@ -65,7 +65,6 @@ export default function Dashboard() {
 
     return (
         <div className="space-y-6 animate-fade-in">
-            {/* Bagian Header Diupdate Menggunakan Versi Git Pull (Terbaru) */}
             <div className="flex flex-col md:flex-row justify-between items-end gap-4 mb-2">
                 <div>
                     <h2 className="text-2xl font-extrabold text-slate-700 tracking-tight">
@@ -105,44 +104,64 @@ export default function Dashboard() {
                             {
                                 l: 'Protein', v: stats.protein, t: targets.protein,
                                 unit: 'g',
+                                info: 'Membangun otot & memperbaiki sel tubuh.',
+                                ex: 'Telur, Dada Ayam',
                                 style: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-700', bar: 'bg-blue-500', label: 'text-blue-500' }
                             },
                             {
-                                l: 'Carbs', v: stats.carbs, t: targets.carbs,
+                                l: 'Karbohidrat', v: stats.carbs, t: targets.carbs,
                                 unit: 'g',
+                                info: 'Sumber energi utama untuk beraktivitas.',
+                                ex: 'Nasi Merah, Roti Gandum',
                                 style: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-700', bar: 'bg-orange-500', label: 'text-orange-500' }
                             },
                             {
-                                l: 'Fat', v: stats.fat, t: targets.fat,
+                                l: 'Lemak', v: stats.fat, t: targets.fat,
                                 unit: 'g',
+                                info: 'Cadangan energi & pelindung organ vital.',
+                                ex: 'Alpukat, Kacang-kacangan',
                                 style: { bg: 'bg-red-50', border: 'border-red-100', text: 'text-red-700', bar: 'bg-red-500', label: 'text-red-500' }
                             },
 
                             {
                                 l: 'Gula', v: stats.sugar, t: targets.sugar,
                                 unit: 'g',
+                                info: 'Energi cepat, konsumsi berlebih picu diabetes.',
+                                ex: 'Permen, Minuman Manis',
                                 style: { bg: 'bg-purple-50', border: 'border-purple-100', text: 'text-purple-700', bar: 'bg-purple-500', label: 'text-purple-500' }
                             },
                             {
                                 l: 'Garam', v: stats.salt, t: targets.salt,
                                 unit: 'mg',
+                                info: 'Mengatur keseimbangan cairan & fungsi saraf.',
+                                ex: 'Kecap Asin, Makanan Kaleng',
                                 style: { bg: 'bg-slate-50', border: 'border-slate-100', text: 'text-slate-700', bar: 'bg-slate-500', label: 'text-slate-500' }
                             },
                             {
                                 l: 'Serat', v: stats.fiber, t: targets.fiber, unit: 'g',
+                                info: 'Melancarkan pencernaan & menjaga gula darah.',
+                                ex: 'Sayur Bayam, Buah Apel',
                                 style: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-700', bar: 'bg-emerald-500', label: 'text-emerald-500' }
                             }
                         ].map((m, i) => (
-                            <div key={i} className={`${m.style.bg} backdrop-blur-sm p-3 rounded-2xl border ${m.style.border} flex flex-col justify-between h-24`}>
+                            <div key={i} className={`${m.style.bg} backdrop-blur-sm p-3 rounded-2xl border ${m.style.border} flex flex-col justify-between h-24 relative group`}>
+                                <div className="absolute top-2 right-2 z-20">
+                                    <div className="relative">
+                                        <Question size={16} weight="fill" className={`${m.style.text} opacity-50 hover:opacity-100 cursor-help transition-opacity`} />
+                                        <div className="absolute right-0 top-5 w-48 bg-white/95 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-slate-100 rounded-xl p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top-right scale-95 group-hover:scale-100 pointer-events-none">
+                                            <p className="text-[10px] font-bold text-slate-700 mb-1 leading-tight">{m.info}</p>
+                                            <p className="text-[9px] text-slate-500 leading-tight">Contoh: <span className="font-semibold">{m.ex}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div>
-                                    <p className={`text-[10px] ${m.style.label} font-bold uppercase`}>{m.l}</p>
+                                    <p className={`text-[10px] ${m.style.label} font-bold uppercase pr-4`}>{m.l}</p>
                                     <p className={`text-lg font-bold ${m.style.text}`}>{Math.round(m.v)}<span className="text-xs font-normal ml-0.5">{m.unit}</span></p>
                                 </div>
 
                                 <div>
                                     <div className="flex justify-between text-[10px] text-slate-400 mb-1">
                                         <span>Target</span>
-
                                         <span>{m.t}{m.unit}</span>
                                     </div>
                                     <div className="w-full bg-white/60 h-1.5 rounded-full overflow-hidden">
