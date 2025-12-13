@@ -129,9 +129,6 @@ export default function Profile() {
                             <p className="text-sm text-slate-500 font-medium">{formData.email}</p>
                             
                             <div className="mt-6 flex justify-center gap-2">
-                                <div className="px-4 py-2 bg-blue-50 text-blue-700 rounded-xl text-xs font-bold border border-blue-100">
-                                    Member Pro
-                                </div>
                                 <div className="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-xl text-xs font-bold border border-emerald-100">
                                     Medical Active
                                 </div>
@@ -267,7 +264,7 @@ export default function Profile() {
                             </div>
                         </div>
 
-                        <div className="mt-8 pt-6 border-t border-slate-200/60 flex justify-end">
+                        <div className="mt-8 pt-6 border-t border-slate-200/60 flex justify-center">
                             <button onClick={handleSave} className="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 transition flex items-center gap-2 transform active:scale-95">
                                 <CheckCircle size={20} weight="fill"/>
                                 Simpan Perubahan

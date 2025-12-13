@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import api from '../services/api';
 import { Robot, PaperPlaneRight, Sparkle, User } from '@phosphor-icons/react';
 import ReactMarkdown from 'react-markdown';
-import Swal from 'sweetalert2';
 
 export default function Chat() {
     const [messages, setMessages] = useState([]);
@@ -57,7 +56,7 @@ export default function Chat() {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-120px)] bg-white/50 backdrop-blur-3xl rounded-[2rem] border border-white/60 shadow-2xl overflow-hidden relative">
+        <div className="flex flex-col h-full md:h-[calc(100vh-120px)] bg-transparent md:bg-white/50 md:backdrop-blur-3xl md:rounded-[2rem] border-0 md:border md:border-white/60 shadow-none md:shadow-2xl overflow-hidden relative">
             <div className="px-6 py-5 bg-white/60 backdrop-blur-md border-b border-white/50 flex justify-between items-center z-20 sticky top-0">
                 <div className="flex items-center gap-4">
                     <div className="relative">
