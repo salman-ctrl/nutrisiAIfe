@@ -264,7 +264,9 @@ export default function Journal() {
                                         <td className="px-8 py-6 align-middle">
                                             <div className="w-full max-w-[140px]">
                                                 <div className="flex justify-between text-[10px] font-bold text-slate-400 mb-1.5">
-                                                    <span>0%</span>
+                                                    <span className={item.limit && item.v > item.t ? 'text-red-500' : 'text-blue-500'}>
+                                                        {Math.round((item.v / item.t) * 100)}%
+                                                    </span>
                                                     <span>Target: {item.t}{item.unit}</span>
                                                 </div>
                                                 <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden shadow-inner">
